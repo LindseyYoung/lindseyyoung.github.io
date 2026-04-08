@@ -667,13 +667,9 @@
 
   /* ── ANIMATIONS ── */
   .fade-up {
-    opacity: 0;
-    transform: translateY(24px);
-    transition: opacity 0.7s ease, transform 0.7s ease;
-  }
-  .fade-up.visible {
     opacity: 1;
     transform: translateY(0);
+    transition: opacity 0.7s ease, transform 0.7s ease;
   }
 
   /* ── RESPONSIVE ── */
@@ -1036,14 +1032,6 @@
       Open to research collaborations, scientific consulting, and speaking invitations. Please reach out via email or connect on LinkedIn.
     </p>
     <div class="contact-links fade-up">
-      <a class="contact-link" href="/cdn-cgi/l/email-protection#470b3e28322920073224342369222332">
-        <span class="contact-link-icon">Email</span>
-        <span class="__cf_email__" data-cfemail="81cdf8eef4efe6c1f4e2f2e5afe4e5f4">[email&#160;protected]</span>
-      </a>
-      <a class="contact-link" href="/cdn-cgi/l/email-protection#cbb2a4bea5ace5a7a2a5b18baca6aaa2a7e5a8a4a6">
-        <span class="contact-link-icon">Personal</span>
-        <span class="__cf_email__" data-cfemail="60190f150e074e0c090e1a20070d01090c4e030f0d">[email&#160;protected]</span>
-      </a>
       <a class="contact-link" href="https://linkedin.com/in/Lindsey" target="_blank" rel="noopener">
         <span class="contact-link-icon">LinkedIn</span>
         linkedin.com/in/Lindsey
@@ -1074,6 +1062,21 @@
   <span><a href="https://scholar.google.com/citations?user=BSE_tWkAAAAJ&hl=en" target="_blank" rel="noopener">Google Scholar</a></span>
 </footer>
 
-<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+<script>
   // Scroll-triggered fade-in
-  const observer = new IntersectionObserver((ent
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.style.opacity = '1';
+        e.target.style.transform = 'translateY(0)';
+        observer.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.1 });
+
+  document.querySelectorAll('.fade-up').forEach(el => {
+    el.style.opacity = '0';
+    el.style.transform = 'translateY(24px)';
+    observer.observe(el);
+  });
+</script>
