@@ -568,7 +568,7 @@
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 5rem;
-    align-items: center;
+    align-items: start;
     border-top: 1px solid var(--rule);
   }
 
@@ -611,6 +611,26 @@
     min-width: 80px;
   }
 
+  .contact-email-row {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    border-bottom: 1px solid var(--rule);
+    padding-bottom: 1rem;
+    font-size: 0.9rem;
+    color: var(--ink);
+  }
+  .contact-email-row .contact-link-icon {
+    min-width: 80px;
+  }
+  .contact-email-row a {
+    color: var(--accent);
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+  .contact-email-row a:hover { color: #234959; }
+
+  /* ── CONTACT FORM ── */
   .contact-right {
     background: var(--ink);
     color: white;
@@ -618,35 +638,88 @@
     position: relative;
     overflow: hidden;
   }
-  .contact-right::before {
-    content: '"';
-    position: absolute;
-    top: -1rem;
-    right: 1.5rem;
-    font-family: var(--serif);
-    font-size: 14rem;
-    color: rgba(255,255,255,0.04);
-    line-height: 1;
-  }
 
-  .contact-quote {
-    font-family: var(--serif);
-    font-size: 1.3rem;
-    font-style: italic;
-    font-weight: 300;
-    line-height: 1.6;
-    color: rgba(255,255,255,0.85);
-    position: relative;
-    z-index: 1;
-  }
-
-  .contact-quote-attr {
-    margin-top: 1.5rem;
+  .contact-form-title {
     font-family: var(--mono);
-    font-size: 0.62rem;
-    letter-spacing: 0.1em;
+    font-size: 0.65rem;
+    letter-spacing: 0.14em;
     text-transform: uppercase;
     color: #7ab3c8;
+    margin-bottom: 1.75rem;
+  }
+
+  .contact-form {
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+  }
+
+  .form-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+  }
+
+  .form-field {
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+  }
+
+  .form-field label {
+    font-family: var(--mono);
+    font-size: 0.6rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: #7ab3c8;
+  }
+
+  .form-field input,
+  .form-field textarea,
+  .form-field select {
+    background: rgba(255,255,255,0.05);
+    border: 1px solid rgba(255,255,255,0.12);
+    color: white;
+    font-family: var(--sans);
+    font-size: 0.88rem;
+    padding: 0.7rem 0.9rem;
+    outline: none;
+    transition: border-color 0.2s, background 0.2s;
+    resize: none;
+    width: 100%;
+  }
+  .form-field input::placeholder,
+  .form-field textarea::placeholder { color: rgba(255,255,255,0.25); }
+  .form-field input:focus,
+  .form-field textarea:focus { border-color: #7ab3c8; background: rgba(255,255,255,0.08); }
+
+  .form-field textarea { min-height: 110px; }
+
+  .form-submit {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-family: var(--mono);
+    font-size: 0.7rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    background: var(--accent);
+    color: white;
+    border: 1px solid var(--accent);
+    padding: 0.75rem 1.75rem;
+    cursor: pointer;
+    transition: background 0.2s, border-color 0.2s;
+    align-self: flex-start;
+  }
+  .form-submit:hover { background: #234959; border-color: #234959; }
+
+  .form-success {
+    display: none;
+    font-family: var(--mono);
+    font-size: 0.72rem;
+    letter-spacing: 0.08em;
+    color: #7ab3c8;
+    margin-top: 0.5rem;
   }
 
   /* ── FOOTER ── */
@@ -1029,29 +1102,57 @@
       <h2 class="section-title">Get in<br>Touch</h2>
     </div>
     <p class="contact-desc fade-up">
-      Open to research collaborations, scientific consulting, and speaking invitations. Please reach out via email or connect on LinkedIn.
+      Open to research collaborations, scientific consulting, and speaking invitations. Reach out via the form or connect on LinkedIn.
     </p>
     <div class="contact-links fade-up">
-      <a class="contact-link" href="https://linkedin.com/in/Lindsey" target="_blank" rel="noopener">
+      <!-- Email obfuscated: assembled by JS, invisible to scrapers -->
+      <div class="contact-email-row">
+        <span class="contact-link-icon">Email</span>
+        <span id="email-display"></span>
+      </div>
+      <a class="contact-link" href="https://linkedin.com/in/lindseyphd" target="_blank" rel="noopener">
         <span class="contact-link-icon">LinkedIn</span>
-        linkedin.com/in/Lindsey
+        linkedin.com/in/lindseyphd
       </a>
       <a class="contact-link" href="https://scholar.google.com/citations?user=BSE_tWkAAAAJ&hl=en" target="_blank" rel="noopener">
         <span class="contact-link-icon">Scholar</span>
         Google Scholar Profile
       </a>
-      <a class="contact-link" href="https://github.com/Lindsey" target="_blank" rel="noopener">
+      <a class="contact-link" href="https://github.com/LindseyYoung" target="_blank" rel="noopener">
         <span class="contact-link-icon">GitHub</span>
-        github.com/Lindsey
+        github.com/LindseyYoung
       </a>
     </div>
   </div>
 
   <div class="contact-right fade-up">
-    <div class="contact-quote">
-      "Derive enjoyment from training the next generation of scientists and connecting with them through science."
-    </div>
-    <div class="contact-quote-attr">— Lindsey Young Goodman, PhD</div>
+    <div class="contact-form-title">Send a message</div>
+    <!-- Replace YOUR_FORM_ID below with your Formspree form ID -->
+    <!-- Sign up free at formspree.io, create a form, copy the ID -->
+    <form class="contact-form" id="contact-form" action="https://formspree.io/f/myklypkj" method="POST">
+      <div class="form-row">
+        <div class="form-field">
+          <label for="cf-name">Name</label>
+          <input type="text" id="cf-name" name="name" placeholder="Jane Smith" required autocomplete="name">
+        </div>
+        <div class="form-field">
+          <label for="cf-email">Email</label>
+          <input type="email" id="cf-email" name="email" placeholder="jane@university.edu" required autocomplete="email">
+        </div>
+      </div>
+      <div class="form-field">
+        <label for="cf-subject">Subject</label>
+        <input type="text" id="cf-subject" name="subject" placeholder="Collaboration inquiry, speaking invitation…">
+      </div>
+      <div class="form-field">
+        <label for="cf-message">Message</label>
+        <textarea id="cf-message" name="message" placeholder="Tell me about your project or inquiry…" required></textarea>
+      </div>
+      <!-- Honeypot field — hidden from humans, catches bots -->
+      <input type="text" name="_gotcha" style="display:none" tabindex="-1" autocomplete="off">
+      <button type="submit" class="form-submit">Send Message →</button>
+      <p class="form-success" id="form-success">✓ Message sent — I'll be in touch soon.</p>
+    </form>
   </div>
 </section>
 
@@ -1063,7 +1164,7 @@
 </footer>
 
 <script>
-  // Scroll-triggered fade-in
+  // ── Scroll-triggered fade-in ──
   const observer = new IntersectionObserver((entries) => {
     entries.forEach(e => {
       if (e.isIntersecting) {
@@ -1079,4 +1180,52 @@
     el.style.transform = 'translateY(24px)';
     observer.observe(el);
   });
+
+  // ── Email obfuscation ──
+  // Email is split into parts and assembled by JS so scrapers can't read it
+  // from the HTML source. Replace these parts with your actual email.
+  (function() {
+    const u = 'young.linz';   // username — edit this
+    const d = 'gmail.com';    // domain   — edit this
+    const addr = u + '\u0040' + d;
+    const el = document.getElementById('email-display');
+    if (el) {
+      const a = document.createElement('a');
+      a.href = 'mailto:' + addr;
+      a.textContent = addr;
+      el.appendChild(a);
+    }
+  })();
+
+  // ── Contact form: AJAX submission via Formspree ──
+  const form = document.getElementById('contact-form');
+  const successMsg = document.getElementById('form-success');
+
+  if (form) {
+    form.addEventListener('submit', async function(e) {
+      e.preventDefault();
+      const btn = form.querySelector('.form-submit');
+      btn.textContent = 'Sending…';
+      btn.disabled = true;
+
+      try {
+        const res = await fetch(form.action, {
+          method: 'POST',
+          body: new FormData(form),
+          headers: { 'Accept': 'application/json' }
+        });
+        if (res.ok) {
+          form.reset();
+          successMsg.style.display = 'block';
+          btn.textContent = 'Sent ✓';
+        } else {
+          btn.textContent = 'Error — try again';
+          btn.disabled = false;
+        }
+      } catch {
+        btn.textContent = 'Error — try again';
+        btn.disabled = false;
+      }
+    });
+  }
 </script>
