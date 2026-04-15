@@ -1349,22 +1349,6 @@
     observer.observe(el);
   });
 
-  // ── Email obfuscation ──
-  // Email is split into parts and assembled by JS so scrapers can't read it
-  // from the HTML source. Replace these parts with your actual email.
-  (function() {
-    const u = 'young.linz';   // username — edit this
-    const d = 'gmail.com';    // domain   — edit this
-    const addr = u + '\u0040' + d;
-    const el = document.getElementById('email-display');
-    if (el) {
-      const a = document.createElement('a');
-      a.href = 'mailto:' + addr;
-      a.textContent = addr;
-      el.appendChild(a);
-    }
-  })();
-
   // ── Contact form: AJAX submission via Formspree ──
   const form = document.getElementById('contact-form');
   const successMsg = document.getElementById('form-success');
